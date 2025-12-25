@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CRUD Barang</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <h2>HACIENDADEL PART</h2>
+
+    <h3>Tambah Barang</h3>
+    <form id="formTambah">
+        <input id="nama" placeholder="Nama" required>
+        <input id="stok" type="number" placeholder="Stok" required>
+        <input id="harga" type="number" placeholder="Harga" step="0.01" required>
+        <button type="submit">Tambah</button>
+    </form>
+
+    <h3>Edit Barang</h3>
+    <form id="formEdit">
+        <input id="uid" placeholder="ID" readonly required>
+        <input id="unama" placeholder="Nama" required>
+        <input id="ustok" type="number" placeholder="Stok" required>
+        <input id="uharga" type="number" placeholder="Harga" step="0.01" required>
+        <button type="submit">Update</button>
+    </form>
+    
+    <h3>Daftar Barang</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th><th>Nama</th><th>Stok</th><th>Harga</th><th>Aksi</th>
+            </tr>
+        </thead>
+        <tbody id="tabelBarang"></tbody> </table>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>

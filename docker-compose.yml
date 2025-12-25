@@ -1,0 +1,61 @@
+version: "3.9"
+
+services:
+  # CONTAINER 1: TANPA BATASAN (UNLIMITED)
+  app-unlimited:
+    build: .
+    container_name: app-unlimited-container
+    ports:
+      - "5000:5000" # Diakses di localhost:5000
+    environment:
+      MYSQL_HOST: db
+      MYSQL_USER: root
+      MYSQL_PASSWORD: example
+      MYSQL_DB: gudang
+    depends_on:
+      db:
+        condition: service_healthy
+    volumes:
+      - ./templates:/app/templates
+      - ./static:/app/static
+    # TIDAK ADA LIMIT - Menggunakan seluruh resource host
+
+  # CONTAINER 2: DENGAN BATASAN (LIMITED - CGROUPS)
+  app-limited:
+    build: .
+    container_name: app-limited-container
+    ports:
+      - "5001:5000" # Diakses di localhost:5001
+    environment:
+      MYSQL_HOST: db
+      MYSQL_USER: root
+      MYSQL_PASSWORD: example
+      MYSQL_DB: gudang
+    depends_on:
+      db:
+        condition: service_healthy
+    volumes:
+      - ./templates:/app/templates
+      - ./static:/app/static
+      
+    # PENERAPAN RESOURCE LIMITS (CGROUPS)
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5' # Batasi CPU hingga 50% dari 1 core
+          memory: '128M' # Batasi Memori hingga 128 MB
+
+  # DATABASE
+  db:
+    image: mysql:8
+    container_name: mysql-gudang
+    environment:
+      MYSQL_ROOT_PASSWORD: example
+      MYSQL_DATABASE: gudang
+    ports:
+      - "3306:3306"
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 5s
+      timeout: 3s
+      retries: 10

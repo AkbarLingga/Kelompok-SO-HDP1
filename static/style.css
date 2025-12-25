@@ -1,0 +1,100 @@
+/* ====== Global Style ====== */
+body {
+    font-family: Arial, sans-serif;
+    background: #f3f3f3;
+    margin: 0;
+    padding: 20px;
+}
+
+h2, h3 {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+/* ====== Form Style ====== */
+form {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 450px;
+    margin: 0 auto 25px auto;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+form input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border: 1px solid #bbb;
+    border-radius: 6px;
+    box-sizing: border-box; /* Penting untuk width 100% */
+}
+
+form button {
+    width: 100%;
+    margin-top: 15px;
+    background: #007bff;
+    color: white;
+    padding: 12px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+form button:hover {
+    background: #0069d9;
+}
+
+/* ====== Table ====== */
+table {
+    width: 100%;
+    background: white;
+    border-collapse: collapse;
+    margin-top: 20px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+th {
+    background: #007bff;
+    color: white;
+    padding: 12px;
+    text-align: left;
+}
+
+td {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+}
+
+/* ====== Buttons ====== */
+.btn-edit {
+    padding: 6px 12px;
+    background: #ffc107;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+.btn-edit:hover {
+    background: #d39e00;
+}
+
+.btn-delete {
+    padding: 6px 12px;
+    background: #dc3545;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-delete:hover {
+    background: #b21f2d;
+}
